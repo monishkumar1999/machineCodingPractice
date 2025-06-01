@@ -1,0 +1,59 @@
+import { useState } from "react";
+import "./styles.css";
+
+export default function App() {
+  const [chips, setChips] = useState([]);
+
+  const handleSubmit = (e) => {
+    const value = e.target.value;
+
+    if (e.key == "Enter") {
+      if (e.key === "Enter") {
+        if (value.trim() === "") return; // value.trim() it will give single data = ""
+        setChips([...chips, value.trim()]);
+        e.target.value = "";
+      }
+    }
+  };
+
+  const handleDelete = (removeindex) => {
+    const updateChip = chips.filter((chip, index) => {
+      return index != removeindex;
+    });
+    setChips(updateChip);
+  };
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        margin: "40px 0",
+      }}
+    >
+      <h2>Chips Input</h2>
+      <input
+        type="text"
+        placeholder="Type a chip and press tag"
+        style={{ padding: "8px", width: "200px" }}
+        onKeyDown={(e) => handleSubmit(e)}
+      />
+
+      {chips.map((e, index) => {
+        return (
+          <span key={index}>
+            {e}{" "}
+            <span
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                handleDelete(index);
+              }}
+            >
+              X
+            </span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}

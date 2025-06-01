@@ -1,31 +1,45 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles.css";
 
-const OTP_COUNT = 5;
-export default function App() {
-  const [inputarr, setInputarr] = useState(new Array(OTP_COUNT).fill(""));
+const OTPLENGTH = 5;
 
-  const handleCHanges = (value, currentindex) => {
-    if (isNaN(value)) return;
-    // const newOtpArr = [...inputarr];
-    // newOtpArr[index] = value.slice(-1);
-    setInputarr((pre) => {
-      return pre.map((item, i) => {
-        return currentindex == i ? value.slice(-1) : item;
-      });
+export default function App() {
+  const [inputArr, setInput] = useState(new Array(OTPLENGTH).fill());
+  const inputRef = useRef([]);
+  useEffect(() => {
+    inputRef.current[0].focus();
+  }, []);
+  const handleChanges = (value, index) => {
+    if (isNaN(value) || value == " ") return;
+
+    setInput((pre) => {
+      const copyarray = [...pre];
+      copyarray[index] = value.slice(-1);
+      return copyarray;
     });
+    value && inputRef.current[index + 1]?.focus();
+  };
+
+  const handleDelete = (e, index) => {
+    if (!e.target.value && e.key == "Backspace") {
+      inputRef.current[index - 1]?.focus();
+    }
   };
   return (
     <div className="App">
-      {inputarr.map((value, index) => {
+      {inputArr.map((e, index) => {
         return (
           <input
-            className="inputBox"
-            value={value}
+            className="input-box"
             key={index}
-            onChange={(e) => {
-              handleCHanges(e.target.value, index);
+            value={e}
+            ref={(e) => {
+              inputRef.current[index] = e;
             }}
+            onChange={(e) => {
+              handleChanges(e.target.value, index);
+            }}
+            onKeyDown={(e) => handleDelete(e, index)}
           />
         );
       })}

@@ -50,3 +50,49 @@ function List({ getList }) {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+////////////////./././././.
+
+
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+
+export default function App() {
+  const [data, setData] = useState(1);
+  const [dark, isDark] = useState(false);
+
+  const handleCalulation = (value) => {
+    setData(value);
+  };
+
+  const theme = useCallback(
+    () => ({
+      backgroundColor: dark ? "black" : "white",
+    }),
+    [dark]
+  );
+
+  useEffect(() => {
+    console.log("its changing");
+  }, [theme]);
+
+  return (
+    <div style={theme()}>
+      <div>UseMemo</div>
+      <input
+        onChange={(e) => {
+          handleCalulation(e.target.value);
+        }}
+      />
+      {data}
+
+      <button onClick={() => isDark(!dark)}>Dark mode</button>
+    </div>
+  );
+}

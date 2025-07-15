@@ -96,3 +96,57 @@ export default function App() {
     </div>
   );
 }
+
+
+.......////////////............../////////////............../////////////..........////////////..........///////////.
+
+import React, { useState } from "react";
+
+const Button = React.memo(({ onClick }) => {
+  console.log("🔁 Button Rendered");
+  return <button onClick={onClick}>Click Me</button>;
+});
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    console.log("✅ Button Clicked");
+  };
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button> 
+      <Button onClick={handleClick} />
+    </div>
+  );
+}
+// if i click the this button the button component will call why because of the function memory referance is changed( usestate varibale updated) so the compoent this new props come so React memo allow to rerender
+
+the use callback 
+
+import React, { useCallback, useState } from "react";
+
+const Button = ({ onClick }) => {
+  console.log("🔁 Button Rendered");
+  return <button onClick={onClick}>Click Me</button>;
+};
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log("✅ Button Clicked");
+  }, []);
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <Button onClick={handleClick} />
+    </div>
+  );
+}
+
+// here first time render only the handleClick function referance created so when state update the child (Button) component will not update

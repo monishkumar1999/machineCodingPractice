@@ -50,3 +50,18 @@ how the console only work becuase console is return a value that is "undefined" 
  
 3. why we cannot use class in tag?
 jsx is not a html tag its javasciprt xml so class is reserved key word in javascript we we cannot use that 
+
+
+4.Why does JSX need one parent element?
+ React expect the single react element beacuse react wants the single root element its make tree for virtual dom if we use the 
+two root 
+return (
+  <h1>Hello</h1>
+  <p>World</p>
+);
+like this react doesn't know which is parent element thats why we have to give single root element
+<div>
+  <h1>Hello</h1>
+  <p>World</p>
+</div>
+now we have a single parent (single root element)

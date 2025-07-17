@@ -65,3 +65,5 @@ like this react doesn't know which is parent element thats why we have to give s
   <p>World</p>
 </div>
 now we have a single parent (single root element)
+React/Virtual dom refer this 
+

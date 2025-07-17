@@ -53,8 +53,12 @@ jsx is not a html tag its javasciprt xml so class is reserved key word in javasc
 
 
 4.Why does JSX need one parent element?
- React expect the single react element beacuse react wants the single root element its make tree for virtual dom if we use the 
-two root 
+React components must return one single root element because React builds a Virtual DOM tree.
+
+A tree always starts with one root — React needs to know which is the root of your component.
+
+If you return multiple sibling elements, React can’t create a proper tree structure.
+
 return (
   <h1>Hello</h1>
   <p>World</p>
@@ -65,5 +69,7 @@ like this react doesn't know which is parent element thats why we have to give s
   <p>World</p>
 </div>
 now we have a single parent (single root element)
+React enforces one root element to keep its Virtual DOM tree valid and to efficiently compare changes during updates.
+
 https://github.com/monishkumar1999/machineCodingPractice/blob/09af9ac2f0bf4b573fa2ca528c12ad262f7d5ca0/React/Virtual%20dom dom refer this 
 

@@ -71,5 +71,7 @@ like this react doesn't know which is parent element thats why we have to give s
 now we have a single parent (single root element)
 React enforces one root element to keep its Virtual DOM tree valid and to efficiently compare changes during updates.
 
+---->>>every Component wants parent element<<<---
+
 https://github.com/monishkumar1999/machineCodingPractice/blob/09af9ac2f0bf4b573fa2ca528c12ad262f7d5ca0/React/Virtual%20dom dom refer this 
 

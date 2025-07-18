@@ -1,1 +1,41 @@
+here we know about the virtual DOM first we have to understand the DOM first
+
+                            DOM
+when the browser open the web page first read the html then create the object memeory in ram connected like tree this structure is DOM
+
+html code:
+<body>
+  <h1>Hello</h1>
+  <p>World</p>
+</body>
+
+dom tree :
+Document
+ └── html
+      └── body
+           ├── h1
+           │    └── Text: "Hello"
+           └── p
+                └── Text: "World"
+
+element node is h1
+text node js hello
+
+how js manipulat dom 
+Now the DOM tree is live and ready then browser run the javascript then javascript can talk to the DOM tree in memory and change 
+Then the browser automatically triggers a repaint of that part of the page
+
+<h1>Hello</h1>
+<button>Change</button>
+
+document.querySelector("button").addEventListener("click", () => {
+  document.querySelector("h1").textContent = "World";
+});
+
+document → the DOM tree
+querySelector("button") → finds the <button> node in the DOM tree
+addEventListener("click", …) → tells the browser: “when user clicks this button, run this function
+nside the function:
+document.querySelector("h1").textContent = "World";
+👉 Finds the <h1> node in the DOM tree → updates its text to "World" → browser sees the change → updates the screen.
 

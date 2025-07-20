@@ -39,3 +39,20 @@ nside the function:
 document.querySelector("h1").textContent = "World";
 👉 Finds the <h1> node in the DOM tree → updates its text to "World" → browser sees the change → updates the screen.
 
+virtual Dom 
+when the code run in browser react first take the orginal DOM copy that called virtual DOM
+
+What is the use of virtual DOM?
+If any state is changed or props change the component is render at the time if any changes happen react will take the another copy that is anohter virtual dom
+then react compare the that 2 virtual DOM which element is changes happen that only update in real DOM here DIFF algorithem used 
+
+What is the diffing algorithm?
+An algorithm that efficiently compares the old and new Virtual DOM trees.
+Detects which nodes are added, removed, or changed.
+Uses the key prop in lists to match elements properly.
+
+ What is reconciliation?
+the diffing algo is used for compare reconciltion is after comapre update updated or added part thr real DOM
+and changes happened 
+
+

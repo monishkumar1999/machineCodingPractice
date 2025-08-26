@@ -1,1 +1,12 @@
+ useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("✅ this will call after clean up function:", input);  // caller after clean up function code
+      fetchFn();
+    }, 500);
+
+    return () => {
+      console.log(" this will be call first  ", input);   // every time call the clean up called two time when the component unmount and before call the 
+                                                           -useEffect the useEffect this will call first 
+    };
+  }, [input]);
 

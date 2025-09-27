@@ -1,1 +1,43 @@
+1)
 
+string reverse 
+const ReverseString="Monish";
+
+[...ReverseString].reverse().join("")
+
+[...ReverseString]=['h','s','i','n','o','M']
+
+reverse()=['M','o','n,''i','s','h']
+
+join("")="Monish"
+
+
+2)
+
+if([]){
+console.log("IF statement printing)
+}
+else{
+console.log("ELSE statement printing)
+}
+
+Everything else is truthy, including:
+
+[] (empty array) ✅
+
+{} (empty object) ✅
+
+"0" (string containing zero) ✅
+
+"false" (string "false") ✅
+
+---false---
+false	
+0	
+""
+null	
+undefined
+NaN
+
+
+3)
